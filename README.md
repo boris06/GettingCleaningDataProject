@@ -30,21 +30,21 @@ The operation of the script takes place in the following steps:
 2. Reads the features (features.txt) and the descriptions of activities (activity_labels.txt)
 3. Selects only those features which give the means and standard deviations of the quantities, that is, contain the substrings "mean()" and "std()". The variables like angle(X,gravityMean) do not take into account here.
 4. Reads the training data:
-a. training subjects (file subject_train.txt)
-b. training activities (file y_train.txt)
-c. training data (file X_train.txt)
+  a. training subjects (file subject_train.txt)
+  b. training activities (file y_train.txt)
+  c. training data (file X_train.txt)
 5. Prepares the tidy training data set:
-a. adds the activity names
-b. adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
-c. cbinds the training activities, subjects and train data into the data frame train_data
+  a. adds the activity names
+  b. adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
+  c. cbinds the training activities, subjects and train data into the data frame train_data
 6. Reads the test data:
-a. testing subjects (file subject_test.txt)
-b. testing activities (file y_test.txt)
-c. testing data (file X_test.txt)
+  a. testing subjects (file subject_test.txt)
+  b. testing activities (file y_test.txt)
+  c. testing data (file X_test.txt)
 7. Prepares the tidy test data set:
-a. adds the activity names
-b. adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
-c. cbinds the testing activities, subjects and test data into the data frame test_data
+  a. adds the activity names
+  b. adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
+  c. cbinds the testing activities, subjects and test data into the data frame test_data
 8. Concatenates train_data and test_data into tidy_data
 9. Makes good column names in tidy_data
 10. Writes tidy_data to a text file
