@@ -1,2 +1,53 @@
-GettingCleaningDataProject
-==========================
+## Getting and Cleaning Data Project
+
+### Description:
+This repository contains the submission of the project of the Getting and Cleaning Data course. The goal of the is to prepare tidy data that can be used for later analysis. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: 
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
+
+The data for the project can be found here: 
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+The process of tidying the above data is summarized as follows:
+1.Merges the training and the test sets to create one data set.
+2.Extracts only the measurements on the mean and standard deviation for each measurement. 
+3.Uses descriptive activity names to name the activities in the data set
+4.Appropriately labels the data set with descriptive variable names. 
+5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
+
+### Files in this repository:
+1. README.md – this file
+2.CodeBook.md – contains the description of variables, data and any transformations or work performed to clean up the data
+3. run_analysis.R – the script for performing the analysis
+
+### Description of the script run_analysis.R:
+
+The operation of the script takes place in the following steps:
+
+1. Downloads and unzips the data
+2. Reads the features (features.txt) and the descriptions of activities (activity_labels.txt)
+3. Selects only those features which give the means and standard deviations of the quantities, that is, contain the substrings "mean()" and "std()". The variables like angle(X,gravityMean) do not take into account here.
+4. reads the training data:
+a. training subjects (file subject_train.txt)
+b. training activities (file y_train.txt)
+c. training data (file X_train.txt)
+5. prepares the tidy training data set:
+a. adds the activity names
+b. adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
+c. cbinds the training activities, subjects and train data into the data frame train_data
+6. reads the test data:
+a. testing subjects (file subject_test.txt)
+b. testing activities (file y_test.txt)
+c. testing data (file X_test.txt)
+7. prepares the tidy test data set:
+a. adds the activity names
+b. adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
+c. cbinds the testing activities, subjects and test data into the data frame test_data
+8. concatenates train_data and test_data into tidy_data
+9. makes good column names in tidy_data
+10. writes tidy_data to a text file
+11. averages the quantities in tidy_data by activity and subject
+12. writes the averaged quantities in tidy_data_mean to a text file
+
+
