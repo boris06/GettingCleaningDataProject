@@ -1,6 +1,6 @@
 ## Getting and Cleaning Data Project
 
-### Description:
+### Description of the project:
 This repository contains the submission of the project of the Johns Hopkins course Getting and Cleaning Data. The goal of the course is to prepare tidy data that can be used for later analysis. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: 
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
@@ -19,7 +19,7 @@ The process of tidying the above data is summarized as follows:
 
 ### Files in this repository:
 1. README.md – this file
-2  CodeBook.md – contains the description of variables, data and any transformations or work performed to clean up the data
+2. CodeBook.md – contains the description of variables, data and any transformations or work performed to clean up the data
 3. run_analysis.R – the script for performing the analysis
 
 ### Description of the script:
