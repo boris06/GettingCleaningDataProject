@@ -29,10 +29,10 @@ The operation of the script takes place in the following steps:
 1. Downloads and unzips the data (this is required only at the first run of the script)
 2. Reads the features (features.txt) and the descriptions of activities (activity_labels.txt)
 3. Selects only those features which give the means and standard deviations of the quantities, that is, contain the substrings "mean()" and "std()". The variables like angle(X,gravityMean) do not take into account here.
-4. Reads the training data:<br><br>
-- training subjects (file subject_train.txt)
-- training activities (file y_train.txt)
-- training data (file X_train.txt)
+4. Reads the training data:
+     a) training subjects (file subject_train.txt)
+     b) training activities (file y_train.txt)
+     c) training data (file X_train.txt)
 5. Prepares the tidy training data set:
 - adds the activity names
 - adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
