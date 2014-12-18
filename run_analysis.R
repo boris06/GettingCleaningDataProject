@@ -52,14 +52,13 @@ y_train <- read.table(file, header = FALSE, col.names = c("activityID"),
 file <- paste(path,"X_train.txt",sep="")
 X_train <- read.table(file, header = FALSE, stringsAsFactors=FALSE)
 
-# prepare tidy training data - add the activity names, add column names
-# from features.txt, select only those columns that contain "mean()" and 
-# "std()" finally binding the activities, subjects and train data into
+# prepare tidy training data - add column names from features.txt and 
+# select only those columns that contain "mean()" and "std()" and 
+# finally binding the activities, subjects and train data into
 # data frame train_data
-act_train <- merge(y_train, activities, by = "activityID", all = TRUE)
 colnames(X_train) <- features$feature
 X_train <- X_train[,colMeanStd]
-train_data <- cbind(act_train,subject_train,X_train)
+train_data <- cbind(y_train,subject_train,X_train)
 
 # read the test data
 path <- "./UCI HAR Dataset/test/"
@@ -72,14 +71,13 @@ y_test <- read.table(file, header = FALSE, col.names = c("activityID"),
 file <- paste(path,"X_test.txt",sep="")
 X_test <- read.table(file, header = FALSE, stringsAsFactors=FALSE)
 
-# prepare tidy test data - add the activity names, add column names
-# from features.txt, select only those columns that contain "mean()" and 
-# "std()" finally binding the activities, subjects and test data into
-# data frame test_data 
-act_test <- merge(y_test, activities, by = "activityID", all = TRUE)
+# prepare tidy test data - add column names from features.txt and 
+# select only those columns that contain "mean()" and "std()" and 
+# finally binding the activities, subjects and test data into
+# data frame test_data
 colnames(X_test) <- features$feature
 X_test <- X_test[,colMeanStd]
-test_data <- cbind(act_test,subject_test,X_test)
+test_data <- cbind(y_test,subject_test,X_test)
 
 # concatenate train_data and test_data to tidy_data
 tidy_data <- rbind(train_data, test_data)
@@ -96,15 +94,17 @@ colnames(tidy_data) <- gsub("-", "", colnames(tidy_data), fixed = TRUE)
 write.table(tidy_data, file = "./tidy_data.txt", row.name=FALSE)
 
 # average tidy_data by activity and subject 
-tidy_data_mean <- aggregate(tidy_data[,4:ncol(tidy_data)], 
+tidy_data_mean <- aggregate(tidy_data[,3:ncol(tidy_data)], 
                             by=list(activityID = tidy_data$activityID, 
-                                    activityDesc = tidy_data$activityDesc,
                                     subject = tidy_data$subject), 
                             FUN=mean)
-# order the averaged data by activity and subject
-tidy_data_mean <- tidy_data_mean[order(tidy_data_mean$activityID,
-                                       tidy_data_mean$activityDesc,
-                                       tidy_data_mean$subject),]
+
+# add the description of activities
+tidy_data_mean <- merge(tidy_data_mean,activities,by = "activityID", all=TRUE)
+# reorder the columns so that activityID and activityDesc become the first two columns
+tidy_data_mean <- tidy_data_mean[c(1,69,2:68)]
+# order the data frame by activityID and subject
+tidy_data_mean <- tidy_data_mean[order(tidy_data_mean$activityID,tidy_data_mean$subject),]
 
 # write averaged data
 write.table(tidy_data_mean, file = "./tidy_data_mean.txt", row.name=FALSE)
