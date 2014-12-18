@@ -138,8 +138,9 @@ These signals were used to estimate variables of the feature vector for each pat
     * adds column names from features.txt and select only those columns that contain substrings "mean()" and "std()” in the column names
     * cbinds the testing activities, subjects and test data into the data frame test_data
 8. Concatenates train_data and test_data into tidy_data
-9. Makes good column names in tidy_data
+9. Makes good column names in tidy_data - using gsub replaces removes "()" and "-",  replaces "-mean" with "Mean", "-std" with "StDev", replaces prefix "t" with "time" and prefix "f" with "freq" in variable names
 10. Writes tidy_data to a text file tidy_data.txt
 11. Averages the quantities in tidy_data by activity and subject to resulting data frame tidy_data_mean
 12. Adds the description of activities in tidy_data_mean, reorders the columns so that the activities and their descriptions and subjects come first and finally sorts tidy_data_mean by activity and subject
 12. Writes the averaged quantities in tidy_data_mean to a text file tidy_data_mean.txt
+
