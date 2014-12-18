@@ -24,12 +24,12 @@ subject ... person id, values: 1, 2, ..., 30
 
 Below are the means and standard deviations of 33 measured variables, averaged by activity and subject (see the descriptions of these variables below):
 
-timeBodyAccMeanX
-timeBodyAccMeanY
-timeBodyAccMeanZ
-timeBodyAccStDevX
-timeBodyAccStDevY
-timeBodyAccStDevZ
+* timeBodyAccMeanX
+* timeBodyAccMeanY
+* timeBodyAccMeanZ
+* timeBodyAccStDevX
+* timeBodyAccStDevY
+* timeBodyAccStDevZ
 timeGravityAccMeanX
 timeGravityAccMeanY
 timeGravityAccMeanZ
