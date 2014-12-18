@@ -16,8 +16,11 @@ File name: tidy_data_mean.txt
 Columns (variables):
 
 activityID ... activity id, values: 1, 2, 3, 4, 5, 6
-activityDesc ... the description of activities, values: WALKING	WALKING_UPSTAIRS	WALKING_DOWNSTAIRS	SITTING	STANDING	LAYING
+
+activityDesc ... the description of activities, values: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS,	SITTING,	STANDING,  LAYING
+
 subject ... person id, values: 1, 2, ..., 30
+
 
 Below are the means and standard deviations of 33 measured variables, averaged by activity and subject (see the descriptions of these variables below):
 timeBodyAccMeanX
